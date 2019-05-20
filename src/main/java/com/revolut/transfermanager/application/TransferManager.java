@@ -2,6 +2,7 @@ package com.revolut.transfermanager.application;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.revolut.transfermanager.config.ContextInitializedListener;
 import com.revolut.transfermanager.config.GuiceJerseyBridge;
 import com.revolut.transfermanager.ioc.TransferManagerModule;
 import org.eclipse.jetty.server.Server;
@@ -26,11 +27,13 @@ public class TransferManager {
                 new ServletContextHandler(ServletContextHandler.SESSIONS);
 
         ctx.setContextPath("/");
+        ctx.addEventListener(new ContextInitializedListener());
         server.setHandler(ctx);
 
         ServletContainer servletContainer = new ServletContainer(getResourceConfig());
         ServletHolder serHol = new ServletHolder(servletContainer);
         serHol.setInitOrder(1);
+
         ctx.addServlet(serHol, "/*");
 
         try {

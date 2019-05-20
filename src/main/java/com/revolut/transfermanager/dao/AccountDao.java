@@ -13,4 +13,8 @@ public interface AccountDao {
     List<Account> getAll();
 
     Account saveAccount(Account account);
+
+    void deleteAccount(String id);
+
+    boolean makeTransfer(Account accountFrom, Account accountTo, Long amount);
 }

@@ -1,11 +1,22 @@
 package com.revolut.transfermanager.dto;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class TransferInfoModel {
 
+    @NotNull
+    @Size(min = 1)
     private String accountFrom;
+
+    @NotNull
+    @Size(min = 1)
     private String accountTo;
+
+    @NotNull
+    @Min(1L)
     private Long amount;
-    private String currencyCode;
 
     public String getAccountFrom() {
         return accountFrom;
@@ -29,13 +40,5 @@ public class TransferInfoModel {
 
     public void setAmount(Long amount) {
         this.amount = amount;
-    }
-
-    public String getCurrencyCode() {
-        return currencyCode;
-    }
-
-    public void setCurrencyCode(String currencyCode) {
-        this.currencyCode = currencyCode;
     }
 }

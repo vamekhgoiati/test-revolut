@@ -1,22 +1,21 @@
 package com.revolut.transfermanager.model;
 
-import java.util.Currency;
 import java.util.Objects;
 
 public class Account {
     private String id;
     private String name;
     private Long balance;
-    private Currency defaultCurrency;
     private Long version;
 
     public Account() {
     }
 
-    public Account(String id, String name, Long balance) {
+    public Account(String id, String name, Long balance, Long version) {
         this.id = id;
         this.name = name;
         this.balance = balance;
+        this.version = version;
     }
 
     public String getId() {
@@ -42,15 +41,6 @@ public class Account {
     public void setBalance(Long balance) {
         this.balance = balance;
     }
-
-    public Currency getDefaultCurrency() {
-        return defaultCurrency;
-    }
-
-    public void setDefaultCurrency(Currency defaultCurrency) {
-        this.defaultCurrency = defaultCurrency;
-    }
-
 
     public Long getVersion() {
         return version;

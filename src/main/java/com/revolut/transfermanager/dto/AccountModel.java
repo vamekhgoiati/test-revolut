@@ -7,14 +7,18 @@ public class AccountModel {
     private String id;
     private String name;
     private Long balance;
+    private Long version;
 
     public AccountModel() {
     }
 
     public AccountModel(Account acc) {
-        this.id = acc.getId();
-        this.name = acc.getName();
-        this.balance = acc.getBalance();
+        if (acc != null) {
+            this.id = acc.getId();
+            this.name = acc.getName();
+            this.balance = acc.getBalance();
+            this.version = acc.getVersion();
+        }
     }
 
     public String getId() {
@@ -39,5 +43,13 @@ public class AccountModel {
 
     public void setBalance(Long balance) {
         this.balance = balance;
+    }
+
+    public Long getVersion() {
+        return version;
+    }
+
+    public void setVersion(Long version) {
+        this.version = version;
     }
 }
